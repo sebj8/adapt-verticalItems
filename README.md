@@ -18,9 +18,8 @@ The attributes listed below are used in components.json and are properly formatt
 >**_icon** (object)
 >>**src** (string)
 >>**_classes** (string)
->>**_text** (string)
 >>**alt** (string)
-
+>>**_text** (string)
 >**_graphic** (object)
 >>**src** (string)
 >>**alt** (string)  
