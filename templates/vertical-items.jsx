@@ -4,6 +4,7 @@ import { templates, classes, html, compile } from 'core/js/reactHelpers';
 export default function VerticalItems({
   top,
   _items,
+  _baseLineHeight,
   bottom,
   ...props
 }) {
@@ -18,6 +19,7 @@ export default function VerticalItems({
           </div>
         )}
         <div className='verticalitems__container' role='list'>
+        <div style={{ height: `${_baseLineHeight}%` }} class="verticalitems__baseline"></div>
           {_items.map(({ title, body, _icon, _graphic, _isVisited, _classes }, _index) => (
             <div
               className={classes([
@@ -32,15 +34,24 @@ export default function VerticalItems({
               role="listitem"
             >
 
-              <div className={classes(['verticalitems__item-icon', _isVisited ? 'anim' : 'is-hidden'])}>
-
+              <div className={classes(['verticalitems__item-icon', _isVisited ? 'anim' : 'is-hidden', 
+                (!_icon.src && _icon._text) && 'icon-text',
+                (!_icon.src && !_icon._text) && 'icon-empty',
+                _icon.src && 'icon-graphic'])}>
                 <div className={classes([
                   'icon',
-                  _icon._classes
+                  _icon._classes,
                 ])}>
+                  
                   {_icon.src && (
                     <img src={_icon.src} alt={_icon.alt} />
                   )}
+                  {!_icon.src && _icon._text && (
+                    <span>
+                      {html(compile(_icon._text))}
+                    </span>
+                  )}
+
                 </div>
 
               </div>

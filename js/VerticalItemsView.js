@@ -17,6 +17,7 @@ class VerticalItemsView extends ComponentView {
       }
       $item.on('onscreen', this.onInviewItem.bind(this));
     });
+    this.model.set('_baseLineHeight', 0);
   }
 
   onInviewItem(event, { onscreen, percentInview } = {}) {
@@ -25,6 +26,9 @@ class VerticalItemsView extends ComponentView {
     const index = $(event.currentTarget).data('index');
     const item = this.model.getItem(index);
     item.set('_isVisited', true);
+    const heightOfBaseLine = (index+1) * 100 / this.model.getChildren().length;
+    if(heightOfBaseLine > this.model.get('_baseLineHeight'))
+    this.model.set('_baseLineHeight', (index+1) * 100 / this.model.getChildren().length );
   }
 
   getItemElement(item) {

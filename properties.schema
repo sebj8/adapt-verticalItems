@@ -97,6 +97,14 @@
 								"validators": [],
 								"help": "Classes that are applied to the icon"
 							},
+							"_text": {
+								"type": "string",
+								"required": false,
+								"default": "",
+								"inputType": "Text",
+								"validators": [],
+								"help": "If your theme have custom symbolic fonts, put code here eg. fa-solid fa-star"
+							},
 							"alt": {
 								"type": "string",
 								"required": false,
